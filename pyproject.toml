@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "Cython>=3.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lml_common"
+version = "0.1.0"
+description = "High-integrity common library with both pure python and native compiled structures"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Your Name", email = "engineer@example.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# --- Extension Modules Definitions ---
+[[tool.setuptools.ext-modules]]
+name = "lml_common.lmlconstants"
+sources = ["src/lml_common/lmlconstants.pyx"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "mypy>=1.4.0",
+    "black>=24.0.0",
+]
